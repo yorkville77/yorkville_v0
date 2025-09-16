@@ -1,8 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Mail, MapPin, Clock, Phone } from 'lucide-react';
 import SocialLinks from './SocialLinks';
+import { sendContactFormEmail } from '../services/emailService';
+import { useErrorHandler } from '../hooks/useErrorHandler';
 
 const ContactModal = ({ isOpen, onClose }) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const { handleError } = useErrorHandler();
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      await sendContactFormEmail(formData);
+      setSubmitted(true);
+      
+      // Track form submission
+      if (typeof window !== 'undefined' && window.trackFormSubmission) {
+        window.trackFormSubmission('contact_form');
+      }
+    } catch (error) {
+      setSubmitError('Failed to send message. Please try again.');
+      handleError(error, 'Contact form submission failed');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
