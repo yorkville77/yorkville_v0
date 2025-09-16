@@ -258,49 +258,6 @@ function App() {
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
             <div className="bg-gray-50 p-6 sm:p-8 rounded-lg shadow-md">
               <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6">
-                For Finance Professionals
-              </h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <ChevronRight className="text-blue-900 mt-1 flex-shrink-0" size={20} />
-                  <div>
-                    <strong className="text-gray-900 text-sm sm:text-base">Investment Opportunities</strong>
-                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Access to early-stage businesses seeking capital and expertise</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <ChevronRight className="text-blue-900 mt-1 flex-shrink-0" size={20} />
-                  <div>
-                    <strong className="text-gray-900 text-sm sm:text-base">Advisory Roles</strong>
-                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Meaningful engagements with growing companies</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <ChevronRight className="text-blue-900 mt-1 flex-shrink-0" size={20} />
-                  <div>
-                    <strong className="text-gray-900 text-sm sm:text-base">Content Creation</strong>
-                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Contribute to educational resources and tools</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <ChevronRight className="text-blue-900 mt-1 flex-shrink-0" size={20} />
-                  <div>
-                    <strong className="text-gray-900 text-sm sm:text-base">Professional Network</strong>
-                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Connect with like-minded finance professionals</p>
-                  </div>
-                </li>
-              </ul>
-              <button
-                onClick={handleShowFinanceForm}
-                onClickCapture={() => window.trackButtonClick && window.trackButtonClick('finance_professional_cta', 'services')}
-                className="mt-6 sm:mt-8 bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors w-full sm:w-auto text-sm sm:text-base"
-              >
-                Join Our Network
-              </button>
-            </div>
-            
-            <div className="bg-gray-50 p-6 sm:p-8 rounded-lg shadow-md">
-              <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6">
                 For Businesses
               </h3>
               <ul className="space-y-4">
@@ -339,6 +296,49 @@ function App() {
                 className="mt-6 sm:mt-8 bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors w-full sm:w-auto text-sm sm:text-base"
               >
                 Get Started
+              </button>
+            </div>
+            
+            <div className="bg-gray-50 p-6 sm:p-8 rounded-lg shadow-md">
+              <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6">
+                For Finance Professionals
+              </h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="text-blue-900 mt-1 flex-shrink-0" size={20} />
+                  <div>
+                    <strong className="text-gray-900 text-sm sm:text-base">Investment Opportunities</strong>
+                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Access to early-stage businesses seeking capital and expertise</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="text-blue-900 mt-1 flex-shrink-0" size={20} />
+                  <div>
+                    <strong className="text-gray-900 text-sm sm:text-base">Advisory Roles</strong>
+                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Meaningful engagements with growing companies</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="text-blue-900 mt-1 flex-shrink-0" size={20} />
+                  <div>
+                    <strong className="text-gray-900 text-sm sm:text-base">Content Creation</strong>
+                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Contribute to educational resources and tools</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="text-blue-900 mt-1 flex-shrink-0" size={20} />
+                  <div>
+                    <strong className="text-gray-900 text-sm sm:text-base">Professional Network</strong>
+                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Connect with like-minded finance professionals</p>
+                  </div>
+                </li>
+              </ul>
+              <button
+                onClick={handleShowFinanceForm}
+                onClickCapture={() => window.trackButtonClick && window.trackButtonClick('finance_professional_cta', 'services')}
+                className="mt-6 sm:mt-8 bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors w-full sm:w-auto text-sm sm:text-base"
+              >
+                Join Our Network
               </button>
             </div>
           </div>
