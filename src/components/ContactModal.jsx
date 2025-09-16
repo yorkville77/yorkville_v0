@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Mail, MapPin, Clock, Phone } from 'lucide-react';
+import { X, Mail, MapPin, Clock, Phone, CheckCircle } from 'lucide-react';
 import SocialLinks from './SocialLinks';
 import { sendContactFormEmail } from '../services/emailService';
 import { useErrorHandler } from '../hooks/useErrorHandler';
@@ -46,6 +46,37 @@ const ContactModal = ({ isOpen, onClose }) => {
   };
 
   if (!isOpen) return null;
+
+  // Show thank you message if form was submitted successfully
+  if (submitted) {
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="bg-white rounded-lg max-w-md w-full relative">
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10"
+          >
+            <X size={24} />
+          </button>
+          
+          <div className="p-8 text-center">
+            <CheckCircle className="text-green-500 mx-auto mb-6" size={64} />
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Message Sent Successfully!</h2>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              Thank you for making contact with us.<br />
+              We will respond as soon as possible.
+            </p>
+            <button
+              onClick={onClose}
+              className="bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
