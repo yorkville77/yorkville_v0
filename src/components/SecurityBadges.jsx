@@ -65,5 +65,3 @@ const SecurityBadges = () => {
 };
 
 export default SecurityBadges;
-  )
-}
