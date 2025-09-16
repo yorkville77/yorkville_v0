@@ -4,6 +4,7 @@ import emailjs from '@emailjs/browser';
 const EMAILJS_SERVICE_ID = 'service_q1t117q';
 const EMAILJS_TEMPLATE_ID_BUSINESS = 'template_business';
 const EMAILJS_TEMPLATE_ID_FINANCE = 'template_finance';
+const EMAILJS_TEMPLATE_ID_CONTACT = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_CONTACT || 'template_contact';
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'z0b-6L3lS39kuY5t1';
 
 // Initialize EmailJS with the public key
@@ -126,6 +127,44 @@ export const sendFinanceProfessionalEmail = async (formData) => {
     return { success: true, response };
   } catch (error) {
     console.error('Error sending finance professional email:', error);
+    return { success: false, error };
+  }
+};
+
+export const sendContactFormEmail = async (formData) => {
+  try {
+    // Check if EmailJS is properly configured
+    if (!EMAILJS_PUBLIC_KEY) {
+      console.warn('EmailJS not configured. Form data would be sent to:', formData);
+      // In development, we'll simulate success
+      if (import.meta.env.DEV) {
+        console.log('Development mode: Simulating successful email send');
+        return { success: true, response: { status: 200, text: 'OK (simulated)' } };
+      }
+      throw new Error('Email service not configured');
+    }
+
+    const templateParams = {
+      to_email: 'hello@yorkville.global',
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+      submission_date: new Date().toLocaleString()
+    };
+
+    console.log('Sending contact form email with params:', templateParams);
+
+    const response = await emailjs.send(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_ID_CONTACT,
+      templateParams
+    );
+
+    console.log('Contact form email sent successfully:', response);
+    return { success: true, response };
+  } catch (error) {
+    console.error('Error sending contact form email:', error);
     return { success: false, error };
   }
 };

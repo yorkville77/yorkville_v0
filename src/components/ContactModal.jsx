@@ -63,14 +63,17 @@ const ContactModal = ({ isOpen, onClose }) => {
             {/* Quick Contact Form */}
             <div>
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Send us a Message</h3>
-              <form className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-1">
                     Name *
                   </label>
                   <input
                     type="text"
+                    name="name"
                     id="contact-name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     required
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-800 focus:border-transparent"
                   />
@@ -82,7 +85,10 @@ const ContactModal = ({ isOpen, onClose }) => {
                   </label>
                   <input
                     type="email"
+                    name="email"
                     id="contact-email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     required
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-800 focus:border-transparent"
                   />
@@ -94,7 +100,10 @@ const ContactModal = ({ isOpen, onClose }) => {
                   </label>
                   <input
                     type="text"
+                    name="subject"
                     id="contact-subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-800 focus:border-transparent"
                   />
                 </div>
@@ -105,18 +114,28 @@ const ContactModal = ({ isOpen, onClose }) => {
                   </label>
                   <textarea
                     id="contact-message"
+                    name="message"
                     rows="4"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     required
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-800 focus:border-transparent"
                     placeholder="How can we help you?"
                   />
                 </div>
                 
+                {submitError && (
+                  <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                    <p className="text-red-600 text-sm">{submitError}</p>
+                  </div>
+                )}
+                
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="w-full bg-blue-900 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>
