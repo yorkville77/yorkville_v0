@@ -150,7 +150,7 @@ function App() {
 
       {/* Hero Section */}
       <main id="main-content">
-        <section id="hero" className="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-20">
+        <section id="hero" className="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-16 sm:py-20 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex flex-col items-center text-center">
             <div className="mb-8">
@@ -193,7 +193,7 @@ function App() {
       </main>
 
       {/* Our Philosophy Section */}
-      <section id="philosophy" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <section id="philosophy" className="py-16 sm:py-20 lg:py-24 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 px-4">
@@ -243,7 +243,7 @@ function App() {
       </section>
 
       {/* What We Offer Section */}
-      <section id="services" className="py-12 sm:py-16 lg:py-20 bg-white">
+      <section id="services" className="py-16 sm:py-20 lg:py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 px-4">

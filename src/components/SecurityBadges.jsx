@@ -3,7 +3,7 @@ import { Shield, Lock, CheckCircle, Eye, Database, Globe } from 'lucide-react';
 
 const SecurityBadges = () => {
   return (
-    <div className="bg-gray-50 py-8 sm:py-12">
+    <div className="bg-gray-50 py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-8">
           <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">
