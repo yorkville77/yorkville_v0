@@ -15,7 +15,6 @@ const SecurityBadges = () => {
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
 
           {/* GDPR Compliance */}
           <div className="flex flex-col items-center text-center p-3 sm:p-4 bg-white rounded-lg shadow-sm border border-gray-200">
@@ -52,7 +51,6 @@ const SecurityBadges = () => {
             <h4 className="text-xs sm:text-sm font-semibold text-gray-900 mb-1">Verified</h4>
             <p className="text-xs text-gray-600">Business</p>
           </div>
-        </div>
 
         {/* Additional Security Information */}
         <div className="mt-8 text-center">
@@ -67,5 +65,3 @@ const SecurityBadges = () => {
 };
 
 export default SecurityBadges;
-  )
-}
