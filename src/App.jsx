@@ -181,7 +181,7 @@ function App() {
               <button
                 onClick={handleShowBusinessForm}
                 onClickCapture={() => window.trackButtonClick && window.trackButtonClick('business_support_cta', 'hero')}
-                className="border-2 border-white text-white px-6 sm:px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
+                className="bg-blue-800 text-white px-6 sm:px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
               >
                 Get Business Support
                 <ArrowRight size={20} />
@@ -377,19 +377,19 @@ function App() {
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <button 
                 onClick={() => setShowContact(true)}
-                className="text-blue-100 hover:text-white transition-colors"
+                className="text-blue-200 hover:text-white transition-colors"
               >
                 Contact Us
               </button>
               <button 
                 onClick={() => setShowPrivacy(true)}
-                className="text-blue-100 hover:text-white transition-colors"
+                className="text-blue-200 hover:text-white transition-colors"
               >
                 Privacy Policy
               </button>
               <button 
                 onClick={() => setShowTerms(true)}
-                className="text-blue-100 hover:text-white transition-colors"
+                className="text-blue-200 hover:text-white transition-colors"
               >
                 Terms of Service
               </button>
