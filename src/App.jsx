@@ -170,20 +170,20 @@ function App() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full max-w-lg px-4">
               <button
-                onClick={handleShowFinanceForm}
-                onClickCapture={() => window.trackButtonClick && window.trackButtonClick('finance_professional_cta', 'hero')}
+                onClick={handleShowBusinessForm}
+                onClickCapture={() => window.trackButtonClick && window.trackButtonClick('business_support_cta', 'hero')}
                 className="bg-white text-blue-900 px-6 sm:px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
               >
-                <span className="hidden sm:inline">Join as Finance Professional</span>
-                <span className="sm:hidden">Finance Professional</span>
+                Get Business Support
                 <ArrowRight size={20} />
               </button>
               <button
-                onClick={handleShowBusinessForm}
-                onClickCapture={() => window.trackButtonClick && window.trackButtonClick('business_support_cta', 'hero')}
-                className="bg-blue-800 text-white px-6 sm:px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
+                onClick={handleShowFinanceForm}
+                onClickCapture={() => window.trackButtonClick && window.trackButtonClick('finance_professional_cta', 'hero')}
+                className="bg-blue-900 text-white px-6 sm:px-8 py-4 rounded-lg font-semibold hover:bg-blue-800 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
               >
-                Get Business Support
+                <span className="hidden sm:inline">Join as Finance Professional</span>
+                <span className="sm:hidden">Finance Professional</span>
                 <ArrowRight size={20} />
               </button>
             </div>
