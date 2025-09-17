@@ -8,10 +8,16 @@ const EMAILJS_TEMPLATE_ID_CONTACT = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_CON
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'z0b-6L3lS39kuY5t1';
 
 // Initialize EmailJS with the public key
-emailjs.init('z0b-6L3lS39kuY5t1');
+emailjs.init(EMAILJS_PUBLIC_KEY);
 
 // Test function to verify EmailJS connection
 export const testEmailJSConnection = async () => {
+  // Only available in development
+  if (!import.meta.env.DEV) {
+    console.warn('testEmailJSConnection is only available in development mode');
+    return { success: false, error: 'Not available in production' };
+  }
+
   try {
     console.log('Testing EmailJS connection...');
     console.log('Service ID:', EMAILJS_SERVICE_ID);
@@ -46,7 +52,9 @@ export const sendBusinessFormEmail = async (formData) => {
   try {
     // Check if EmailJS is properly configured
     if (!EMAILJS_PUBLIC_KEY) {
-      console.warn('EmailJS not configured. Form data would be sent to:', formData);
+      if (import.meta.env.DEV) {
+        console.warn('EmailJS not configured. Form data would be sent to:', formData);
+      }
       // In development, we'll simulate success
       if (import.meta.env.DEV) {
         console.log('Development mode: Simulating successful email send');
@@ -91,7 +99,9 @@ export const sendFinanceProfessionalEmail = async (formData) => {
   try {
     // Check if EmailJS is properly configured
     if (!EMAILJS_PUBLIC_KEY) {
-      console.warn('EmailJS not configured. Form data would be sent to:', formData);
+      if (import.meta.env.DEV) {
+        console.warn('EmailJS not configured. Form data would be sent to:', formData);
+      }
       // In development, we'll simulate success
       if (import.meta.env.DEV) {
         console.log('Development mode: Simulating successful email send');
@@ -135,7 +145,9 @@ export const sendContactFormEmail = async (formData) => {
   try {
     // Check if EmailJS is properly configured
     if (!EMAILJS_PUBLIC_KEY) {
-      console.warn('EmailJS not configured. Form data would be sent to:', formData);
+      if (import.meta.env.DEV) {
+        console.warn('EmailJS not configured. Form data would be sent to:', formData);
+      }
       // In development, we'll simulate success
       if (import.meta.env.DEV) {
         console.log('Development mode: Simulating successful email send');
