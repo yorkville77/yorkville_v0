@@ -209,11 +209,6 @@ const AnalyticsProvider = ({ children }) => {
     if (consent) {
       const preferences = JSON.parse(consent);
       
-      // Initialize Microsoft Clarity only if analytics consent is given
-      if (preferences.analytics) {
-        initializeMicrosoftClarity();
-      }
-      
       // Initialize Hotjar only if analytics consent is given
       if (preferences.analytics) {
         initializeHotjar();
@@ -222,17 +217,8 @@ const AnalyticsProvider = ({ children }) => {
     
     // Google Analytics is already loaded in HTML with consent mode
     // It will only collect data when consent is granted
-  };
-
-  // Initialize Microsoft Clarity (only called when consent is given)
-  const initializeMicrosoftClarity = () => {
-    if (typeof window !== 'undefined' && !window.clarity) {
-      (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/sc8cjbwonx";
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script");
-    }
+    
+    // Microsoft Clarity is now loaded in HTML and consent is managed there
   };
 
   // Initialize Hotjar (only called when consent is given)

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Shield, Lock, CheckCircle, Eye, Database, Globe } from 'lucide-react';
+import { Shield, Lock, CheckCircle, Eye, Database } from 'lucide-react';
 
 const SecurityBadges = () => {
   return (
-    <div className="bg-gray-50 py-8 sm:py-12">
+    <div className="bg-gray-50 py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-8">
           <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">
@@ -14,16 +14,7 @@ const SecurityBadges = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
-          {/* SSL Certificate */}
-          <div className="flex flex-col items-center text-center p-3 sm:p-4 bg-white rounded-lg shadow-sm border border-gray-200">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-full flex items-center justify-center mb-2 sm:mb-3">
-              <Lock className="text-green-600" size={20} />
-            </div>
-            <h4 className="text-xs sm:text-sm font-semibold text-gray-900 mb-1">SSL Secured</h4>
-            <p className="text-xs text-gray-600">256-bit Encryption</p>
-          </div>
-
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {/* GDPR Compliance */}
           <div className="flex flex-col items-center text-center p-3 sm:p-4 bg-white rounded-lg shadow-sm border border-gray-200">
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-full flex items-center justify-center mb-2 sm:mb-3">
@@ -49,15 +40,6 @@ const SecurityBadges = () => {
             </div>
             <h4 className="text-xs sm:text-sm font-semibold text-gray-900 mb-1">Privacy First</h4>
             <p className="text-xs text-gray-600">Transparent</p>
-          </div>
-
-          {/* Secure Connection */}
-          <div className="flex flex-col items-center text-center p-3 sm:p-4 bg-white rounded-lg shadow-sm border border-gray-200">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-full flex items-center justify-center mb-2 sm:mb-3">
-              <Globe className="text-green-600" size={20} />
-            </div>
-            <h4 className="text-xs sm:text-sm font-semibold text-gray-900 mb-1">Secure</h4>
-            <p className="text-xs text-gray-600">Connection</p>
           </div>
 
           {/* Verified Business */}

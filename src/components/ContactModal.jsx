@@ -1,9 +1,82 @@
-import React from 'react';
-import { X, Mail, MapPin, Clock, Phone } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, Mail, MapPin, Clock, Phone, CheckCircle } from 'lucide-react';
 import SocialLinks from './SocialLinks';
+import { sendContactFormEmail } from '../services/emailService';
+import { useErrorHandler } from '../hooks/useErrorHandler';
 
 const ContactModal = ({ isOpen, onClose }) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const { handleError } = useErrorHandler();
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      await sendContactFormEmail(formData);
+      setSubmitted(true);
+      
+      // Track form submission
+      if (typeof window !== 'undefined' && window.trackFormSubmission) {
+        window.trackFormSubmission('contact_form');
+      }
+    } catch (error) {
+      setSubmitError('Failed to send message. Please try again.');
+      handleError(error, 'Contact form submission failed');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   if (!isOpen) return null;
+
+  // Show thank you message if form was submitted successfully
+  if (submitted) {
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="bg-white rounded-lg max-w-md w-full relative">
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10"
+          >
+            <X size={24} />
+          </button>
+          
+          <div className="p-8 text-center">
+            <CheckCircle className="text-green-500 mx-auto mb-6" size={64} />
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Message Sent Successfully!</h2>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              Thank you for making contact with us.<br />
+              We will respond as soon as possible.
+            </p>
+            <button
+              onClick={onClose}
+              className="bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
@@ -63,14 +136,17 @@ const ContactModal = ({ isOpen, onClose }) => {
             {/* Quick Contact Form */}
             <div>
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Send us a Message</h3>
-              <form className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-1">
                     Name *
                   </label>
                   <input
                     type="text"
+                    name="name"
                     id="contact-name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     required
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-800 focus:border-transparent"
                   />
@@ -82,7 +158,10 @@ const ContactModal = ({ isOpen, onClose }) => {
                   </label>
                   <input
                     type="email"
+                    name="email"
                     id="contact-email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     required
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-800 focus:border-transparent"
                   />
@@ -94,7 +173,10 @@ const ContactModal = ({ isOpen, onClose }) => {
                   </label>
                   <input
                     type="text"
+                    name="subject"
                     id="contact-subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-800 focus:border-transparent"
                   />
                 </div>
@@ -105,18 +187,28 @@ const ContactModal = ({ isOpen, onClose }) => {
                   </label>
                   <textarea
                     id="contact-message"
+                    name="message"
                     rows="4"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     required
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-800 focus:border-transparent"
                     placeholder="How can we help you?"
                   />
                 </div>
                 
+                {submitError && (
+                  <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                    <p className="text-red-600 text-sm">{submitError}</p>
+                  </div>
+                )}
+                
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="w-full bg-blue-900 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-800 transition-colors"
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>

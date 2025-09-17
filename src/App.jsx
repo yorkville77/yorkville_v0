@@ -150,7 +150,7 @@ function App() {
 
       {/* Hero Section */}
       <main id="main-content">
-        <section id="hero" className="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-20">
+        <section id="hero" className="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-16 sm:py-20 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex flex-col items-center text-center">
             <div className="mb-8">
@@ -170,20 +170,20 @@ function App() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full max-w-lg px-4">
               <button
-                onClick={handleShowFinanceForm}
-                onClickCapture={() => window.trackButtonClick && window.trackButtonClick('finance_professional_cta', 'hero')}
+                onClick={handleShowBusinessForm}
+                onClickCapture={() => window.trackButtonClick && window.trackButtonClick('business_support_cta', 'hero')}
                 className="bg-white text-blue-900 px-6 sm:px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
               >
-                <span className="hidden sm:inline">Join as Finance Professional</span>
-                <span className="sm:hidden">Finance Professional</span>
+                Get Business Support
                 <ArrowRight size={20} />
               </button>
               <button
-                onClick={handleShowBusinessForm}
-                onClickCapture={() => window.trackButtonClick && window.trackButtonClick('business_support_cta', 'hero')}
-                className="border-2 border-white text-white px-6 sm:px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
+                onClick={handleShowFinanceForm}
+                onClickCapture={() => window.trackButtonClick && window.trackButtonClick('finance_professional_cta', 'hero')}
+                className="bg-blue-900 text-white px-6 sm:px-8 py-4 rounded-lg font-semibold hover:bg-blue-800 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
               >
-                Get Business Support
+                <span className="hidden sm:inline">Join as Finance Professional</span>
+                <span className="sm:hidden">Finance Professional</span>
                 <ArrowRight size={20} />
               </button>
             </div>
@@ -193,7 +193,7 @@ function App() {
       </main>
 
       {/* Our Philosophy Section */}
-      <section id="philosophy" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <section id="philosophy" className="py-16 sm:py-20 lg:py-24 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 px-4">
@@ -243,7 +243,7 @@ function App() {
       </section>
 
       {/* What We Offer Section */}
-      <section id="services" className="py-12 sm:py-16 lg:py-20 bg-white">
+      <section id="services" className="py-16 sm:py-20 lg:py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 px-4">
@@ -256,49 +256,6 @@ function App() {
           </div>
           
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
-            <div className="bg-gray-50 p-6 sm:p-8 rounded-lg shadow-md">
-              <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6">
-                For Finance Professionals
-              </h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <ChevronRight className="text-blue-900 mt-1 flex-shrink-0" size={20} />
-                  <div>
-                    <strong className="text-gray-900 text-sm sm:text-base">Investment Opportunities</strong>
-                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Access to early-stage businesses seeking capital and expertise</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <ChevronRight className="text-blue-900 mt-1 flex-shrink-0" size={20} />
-                  <div>
-                    <strong className="text-gray-900 text-sm sm:text-base">Advisory Roles</strong>
-                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Meaningful engagements with growing companies</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <ChevronRight className="text-blue-900 mt-1 flex-shrink-0" size={20} />
-                  <div>
-                    <strong className="text-gray-900 text-sm sm:text-base">Content Creation</strong>
-                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Contribute to educational resources and tools</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <ChevronRight className="text-blue-900 mt-1 flex-shrink-0" size={20} />
-                  <div>
-                    <strong className="text-gray-900 text-sm sm:text-base">Professional Network</strong>
-                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Connect with like-minded finance professionals</p>
-                  </div>
-                </li>
-              </ul>
-              <button
-                onClick={handleShowFinanceForm}
-                onClickCapture={() => window.trackButtonClick && window.trackButtonClick('finance_professional_cta', 'services')}
-                className="mt-6 sm:mt-8 bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors w-full sm:w-auto text-sm sm:text-base"
-              >
-                Join Our Network
-              </button>
-            </div>
-            
             <div className="bg-gray-50 p-6 sm:p-8 rounded-lg shadow-md">
               <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6">
                 For Businesses
@@ -341,6 +298,49 @@ function App() {
                 Get Started
               </button>
             </div>
+            
+            <div className="bg-gray-50 p-6 sm:p-8 rounded-lg shadow-md">
+              <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6">
+                For Finance Professionals
+              </h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="text-blue-900 mt-1 flex-shrink-0" size={20} />
+                  <div>
+                    <strong className="text-gray-900 text-sm sm:text-base">Investment Opportunities</strong>
+                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Access to early-stage businesses seeking capital and expertise</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="text-blue-900 mt-1 flex-shrink-0" size={20} />
+                  <div>
+                    <strong className="text-gray-900 text-sm sm:text-base">Advisory Roles</strong>
+                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Meaningful engagements with growing companies</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="text-blue-900 mt-1 flex-shrink-0" size={20} />
+                  <div>
+                    <strong className="text-gray-900 text-sm sm:text-base">Content Creation</strong>
+                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Contribute to educational resources and tools</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ChevronRight className="text-blue-900 mt-1 flex-shrink-0" size={20} />
+                  <div>
+                    <strong className="text-gray-900 text-sm sm:text-base">Professional Network</strong>
+                    <p className="text-gray-600 mt-1 text-sm sm:text-base">Connect with like-minded finance professionals</p>
+                  </div>
+                </li>
+              </ul>
+              <button
+                onClick={handleShowFinanceForm}
+                onClickCapture={() => window.trackButtonClick && window.trackButtonClick('finance_professional_cta', 'services')}
+                className="mt-6 sm:mt-8 bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors w-full sm:w-auto text-sm sm:text-base"
+              >
+                Join Our Network
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -377,19 +377,19 @@ function App() {
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               <button 
                 onClick={() => setShowContact(true)}
-                className="text-blue-100 hover:text-white transition-colors"
+                className="text-blue-200 hover:text-white transition-colors"
               >
                 Contact Us
               </button>
               <button 
                 onClick={() => setShowPrivacy(true)}
-                className="text-blue-100 hover:text-white transition-colors"
+                className="text-blue-200 hover:text-white transition-colors"
               >
                 Privacy Policy
               </button>
               <button 
                 onClick={() => setShowTerms(true)}
-                className="text-blue-100 hover:text-white transition-colors"
+                className="text-blue-200 hover:text-white transition-colors"
               >
                 Terms of Service
               </button>
